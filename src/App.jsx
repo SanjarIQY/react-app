@@ -1,11 +1,19 @@
 import "./App.css";
-import Button from "./components/Button/Button";
-import Counter from "./counter";
-import { List } from "./List";
 import { MainLayout } from "./components/MainLayout";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  return <MainLayout />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<div>home</div>} />
+          <Route path="/forbidden" element={<div>Salomat oma!</div>} />
+          <Route path="/addquestion" element={<div>addquestion</div>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
