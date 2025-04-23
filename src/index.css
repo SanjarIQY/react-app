@@ -1,8 +1,12 @@
 :root {
   --main-bg-color: #23272F;
 
-  --text-color: #FFF
+  --text-color: #FFF;
 
+  --card-bg-color: #343a46;
+    
+  --btn-bg-color: #16444f;
+  --btn-text-color: #57C4DC; 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -44,13 +48,23 @@ h1 {
   :root {
     --main-bg-color: #FFF;
     --text-color: #000;
+
+    --card-bg-color: #ebedf0;
+
+    --btn-bg-color: #16444f;
+    --btn-text-color: #57C4DC; 
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --main-bg-color: #23272F;
-    --text-color: #FFF
+    --text-color: #FFF;
+
+    --card-bg-color: #343a46;
+
+    --btn-bg-color: #383b3f;
+    --btn-text-color: #FFF; 
   }
 }
 

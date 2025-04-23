@@ -1,11 +1,9 @@
 import cls from "../Button/Button.module.css";
 
-const isPrimary = true;
-
-export default function Button({ onClick, children }) {
+export const Button = (props) => {
   return (
-    <button className={isPrimary == true ? cls.btn : cls.primary} onClick={onClick}>
-      {children}
+    <button className={props.isActive == true ? cls.btn : cls.active} onClick={props.onClick} disabled={props.isDisabled}>
+      {props.children}
     </button>
   );
-}
+};
