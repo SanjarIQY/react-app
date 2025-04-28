@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { API_URL } from "../../constants";
 import { QuestionCardList } from "../QuestionCardList";
 import { Loader } from "../Loader";
@@ -8,7 +8,7 @@ import { SearchInput } from "../SearchInput/SearchInput";
 
 export const HomePage = () => {
   const [questions, setQuestions] = useState([]);
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState("");
 
   const [getQuestions, isLoading, error] = useFetch(async (url) => {
     const response = await fetch(`${API_URL}/${url}`);
@@ -17,6 +17,10 @@ export const HomePage = () => {
     setQuestions(questions);
     return questions;
   });
+
+  const cards = useMemo(() => {
+    return questions.filter((data) => data.question.toLowerCase().includes(searchValue.trim().toLowerCase()));
+  }, [questions, searchValue]);
 
   // const _getQuestions = async () => {
   //   try {
@@ -49,9 +53,11 @@ export const HomePage = () => {
         <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
       </div>
 
-      {error && <p>{error}</p>}
       {isLoading && <Loader />}
-      <QuestionCardList cards={questions} />
+      {error && <p>{error}</p>}
+      {cards.length === 0 && <p>No Cards...</p>}
+
+      <QuestionCardList cards={cards} />
     </>
   );
 };

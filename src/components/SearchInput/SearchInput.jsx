@@ -12,11 +12,11 @@ export const SearchInput = (props) => {
       </label>
       <input
         type="text"
-        value={props.searchValue}
+        value={props.value}
         placeholder="search..."
         className={cls.input}
         id={inputID}
-        onChange={props.onSearchChangeHandler}
+        onChange={props.onChange}
       />
     </div>
   );
