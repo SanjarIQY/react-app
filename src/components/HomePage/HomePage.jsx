@@ -5,10 +5,15 @@ import { Loader } from "../Loader";
 import { useFetch } from "../hooks/useFetch";
 import cls from "./HomePage.module.css";
 import { SearchInput } from "../SearchInput/SearchInput";
+import { Button } from "../Button";
+
+const DEAFAULT_PER_PAGE = 10;
 
 export const HomePage = () => {
-  const [questions, setQuestions] = useState([]);
+  const [searchParams, setSearchParams] = useState(`?_page=1&_per_page=${DEAFAULT_PER_PAGE}`);
+  const [questions, setQuestions] = useState({});
   const [searchValue, setSearchValue] = useState("");
+  const [selectValue, setSelectValue] = useState("");
 
   const [getQuestions, isLoading, error] = useFetch(async (url) => {
     const response = await fetch(`${API_URL}/${url}`);
@@ -19,8 +24,23 @@ export const HomePage = () => {
   });
 
   const cards = useMemo(() => {
-    return questions.filter((data) => data.question.toLowerCase().includes(searchValue.trim().toLowerCase()));
+    if (questions?.data) {
+      if (searchValue.trim()) {
+        return questions.filter((data) => data.question.toLowerCase().includes(searchValue.trim().toLowerCase()));
+      } else {
+        return questions.data;
+      }
+    }
+    return [];
   }, [questions, searchValue]);
+
+  const pagination = useMemo(() => {
+    const totalCardsCount = questions?.pages || 0;
+
+    return Array(totalCardsCount)
+      .fill(0)
+      .map((_, i) => i + 1);
+  });
 
   // const _getQuestions = async () => {
   //   try {
@@ -39,25 +59,45 @@ export const HomePage = () => {
   // };
 
   useEffect(() => {
-    getQuestions("react");
-  }, []);
+    getQuestions(`react${searchParams}`);
+  }, [searchParams]);
 
   const onSearchChangeHandler = (e) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
   };
 
+  const onSelectValueChangeHandler = (e) => {
+    console.log(e.target.value);
+    setSelectValue(e.target.value);
+
+    setSearchParams(`?_page=1&_per_page=${DEAFAULT_PER_PAGE}&${e.target.value}`);
+  };
+
   return (
     <>
       <div className={cls.controlsContainer}>
         <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
+
+        <select value={selectValue} onChange={onSelectValueChangeHandler} className={cls.select}>
+          <option value="">sort by</option>
+          <hr />
+          <option value="_sort=level">level ASC</option>
+          <option value="_sort=-level">level DESC</option>
+          <option value="_sort=completed">completed ASC</option>
+          <option value="_sort=-completed">completed DESC</option>
+        </select>
       </div>
 
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
-      {cards.length === 0 && <p>No Cards...</p>}
+      {cards.length === 0 && <p className={cls.noCardsInfo}>No Cards...</p>}
 
       <QuestionCardList cards={cards} />
+
+      {pagination.map((value) => {
+        return <Button key={value}>{value}</Button>;
+      })}
     </>
   );
 };
