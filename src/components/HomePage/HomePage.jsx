@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { API_URL } from "../../constants";
 import { QuestionCardList } from "../QuestionCardList";
 import { Loader } from "../Loader";
@@ -15,6 +15,10 @@ export const HomePage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectValue, setSelectValue] = useState("");
 
+  const controlsContainerRef = useRef();
+
+  const getActivePageNumber = () => (questions.next === null ? questions.last : questions.next - 1);
+
   const [getQuestions, isLoading, error] = useFetch(async (url) => {
     const response = await fetch(`${API_URL}/${url}`);
     const questions = await response.json();
@@ -26,7 +30,7 @@ export const HomePage = () => {
   const cards = useMemo(() => {
     if (questions?.data) {
       if (searchValue.trim()) {
-        return questions.filter((data) => data.question.toLowerCase().includes(searchValue.trim().toLowerCase()));
+        return questions.data.filter((data) => data.question.toLowerCase().includes(searchValue.trim().toLowerCase()));
       } else {
         return questions.data;
       }
@@ -74,9 +78,15 @@ export const HomePage = () => {
     setSearchParams(`?_page=1&_per_page=${DEAFAULT_PER_PAGE}&${e.target.value}`);
   };
 
+  const paginationHandler = (e) => {
+    if (e.target.tagName === "BUTTON") {
+      setSearchParams(`?_page=${e.target.textContent}&_per_page=${DEAFAULT_PER_PAGE}&${selectValue}`);
+      controlsContainerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <>
-      <div className={cls.controlsContainer}>
+      <div className={cls.controlsContainer} ref={controlsContainerRef}>
         <SearchInput value={searchValue} onChange={onSearchChangeHandler} />
 
         <select value={selectValue} onChange={onSelectValueChangeHandler} className={cls.select}>
@@ -91,13 +101,22 @@ export const HomePage = () => {
 
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
-      {cards.length === 0 && <p className={cls.noCardsInfo}>No Cards...</p>}
 
       <QuestionCardList cards={cards} />
 
-      {pagination.map((value) => {
-        return <Button key={value}>{value}</Button>;
-      })}
+      {cards.length === 0 ? (
+        <p className={cls.noCardsInfo}>No Cards...</p>
+      ) : (
+        <div className={cls.paginationContainer} onClick={paginationHandler}>
+          {pagination.map((value) => {
+            return (
+              <Button isActive={!(value === getActivePageNumber())} key={value}>
+                {value}
+              </Button>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
