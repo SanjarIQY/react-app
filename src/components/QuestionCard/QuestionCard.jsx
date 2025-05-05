@@ -14,7 +14,7 @@ export const QuestionCard = (props) => {
   return (
     <div className={cls.card}>
       <div className={cls.cardLabels}>
-        <Badge variant={levelVariant}>{props.card.level}</Badge>
+        <Badge variant={levelVariant}>Level: {props.card.level}</Badge>
         <Badge variant={completedVariant}>{props.card.completed ? "Completed" : "Not Completed"}</Badge>
       </div>
 

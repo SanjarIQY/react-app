@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { API_URL } from "../../constants";
-import { QuestionCardList } from "../QuestionCardList";
-import { Loader } from "../Loader";
-import { useFetch } from "../hooks/useFetch";
+import { QuestionCardList } from "../../components/QuestionCardList";
+import { Loader } from "../../components/Loader";
+import { useFetch } from "../../components/hooks/useFetch";
 import cls from "./HomePage.module.css";
-import { SearchInput } from "../SearchInput/SearchInput";
-import { Button } from "../Button";
+import { SearchInput } from "../../components/SearchInput";
+import { Button } from "../../components/Button";
 
 const DEAFAULT_PER_PAGE = 10;
 
@@ -14,7 +14,7 @@ export const HomePage = () => {
   const [questions, setQuestions] = useState({});
   const [searchValue, setSearchValue] = useState("");
   const [selectValue, setSelectValue] = useState("");
-  const [countSelectValue, setCountSelectValue] = useState("");
+  const [countSelectValue, setCountSelectValue] = useState("5");
 
   const controlsContainerRef = useRef();
 

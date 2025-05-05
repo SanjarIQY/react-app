@@ -14,10 +14,8 @@ export const Header = () => {
       </p>
 
       <div className={cls.buttons}>
-        <Button isActive={true} onClick={() => navigate("/addquestion")}>
-          Add
-        </Button>
-        <Button isActive={true}>Log in</Button>
+        <Button onClick={() => navigate("/addquestion")}>Add</Button>
+        <Button>Log in</Button>
       </div>
     </header>
   );

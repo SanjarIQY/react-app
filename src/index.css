@@ -53,6 +53,9 @@ h1 {
 
     --btn-bg-color: #16444f;
     --btn-text-color: #57C4DC; 
+    
+    --btn-bg-color: #383b3f;
+    --btn-text-color: #FFF; 
   }
 }
 
@@ -63,8 +66,8 @@ h1 {
 
     --card-bg-color: #343a46;
 
-    --btn-bg-color: #383b3f;
-    --btn-text-color: #FFF; 
+    --btn-bg-color: #16444f;
+    --btn-text-color: #57C4DC; 
   }
 }
 

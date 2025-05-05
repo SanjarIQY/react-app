@@ -1,0 +1,160 @@
+.container{
+  width: 100%;
+  max-width: 600px;
+  height: max-content;
+  margin: 50px auto;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
+  box-shadow: 0 0 8px rgb(0, 0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: start;
+  gap: 25px;
+
+  button{
+    width: 100%;
+  }
+}
+
+.cardLabels{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: 10px;
+}
+
+.editDate {
+  margin-left: auto;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.cardTitle{
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.cardAnswers {
+  margin-top: auto;
+  opacity: .65;
+}
+
+.cardDescription{
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.cardAnswer {
+  font-size: 14px;
+  font-style: italic;
+  text-align: justify;
+}
+
+.cardLinks{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+
+  li{
+    margin-left: 15px;
+  }
+}
+
+.checkBoxContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  span {
+    font-size: 14px;
+    padding: 2px;
+  }
+}
+
+.checkBox {
+  width: 18px;
+  height: 18px;
+  accent-color: #16c47f;
+}
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+}
+  .loader:before,
+  .loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+  }
+  .loader:after {
+    color: #FF3D00;
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+  }
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}

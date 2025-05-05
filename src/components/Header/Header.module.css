@@ -16,4 +16,9 @@
     cursor: pointer;
     user-select: none;
   }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
 }
