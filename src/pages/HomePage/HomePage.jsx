@@ -14,7 +14,7 @@ export const HomePage = () => {
   const [questions, setQuestions] = useState({});
   const [searchValue, setSearchValue] = useState("");
   const [selectValue, setSelectValue] = useState("");
-  const [countSelectValue, setCountSelectValue] = useState("5");
+  const [countSelectValue, setCountSelectValue] = useState(5);
 
   const controlsContainerRef = useRef();
 
