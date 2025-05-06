@@ -4,6 +4,8 @@
   --text-color: #FFF;
 
   --card-bg-color: #343a46;
+  
+  --green-color: #219679
     
   --btn-bg-color: #16444f;
   --btn-text-color: #57C4DC; 
@@ -56,6 +58,7 @@ h1 {
     
     --btn-bg-color: #383b3f;
     --btn-text-color: #FFF; 
+    --green-color: #219679
   }
 }
 
@@ -68,6 +71,7 @@ h1 {
 
     --btn-bg-color: #16444f;
     --btn-text-color: #57C4DC; 
+    --green-color: #219679
   }
 }
 
