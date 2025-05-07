@@ -564,6 +564,17 @@
       "resources": [],
       "level": 1,
       "completed": false
+    },
+    {
+      "id": "a759",
+      "question": "Doday I ganna indroduce poinderzzz, so whad iz poinder?",
+      "answer": "Poinder iz a variable that holdz address of another veriyebl.",
+      "description": "just go to gugl and learn it from there.",
+      "resources": [
+        "https://www.youtube.com/watch?v=l0qvxPPISuY&ab_channel=NareshiTechnologies"
+      ],
+      "level": 1,
+      "completed": true
     }
   ]
 }
