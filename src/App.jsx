@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { QuestionPage } from "./pages/QuestionPage";
 import { AddQuestionPage, AddQuestionPageLazy } from "./pages/AddQuestionPage";
+import { EditQuestionPage } from "./pages/EditQuestionPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/forbidden" element={<div>Salomat oma!</div>} />
           <Route path="/addquestion" element={<AddQuestionPageLazy />} />
           <Route path="/question/:id" element={<QuestionPage />} />
+          <Route path="/editquestion/:id" element={<EditQuestionPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

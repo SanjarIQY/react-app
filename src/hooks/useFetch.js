@@ -1,4 +1,4 @@
-import { DelayfFn } from "../../helpers/delayFN";
+import { DelayfFn } from "../helpers/delayFN";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
