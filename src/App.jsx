@@ -4,7 +4,7 @@ import { MainLayout } from "./components/MainLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { QuestionPage } from "./pages/QuestionPage";
-import { AddQuestionPage } from "./pages/AddQuestionPage";
+import { AddQuestionPage, AddQuestionPageLazy } from "./pages/AddQuestionPage";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/forbidden" element={<div>Salomat oma!</div>} />
-          <Route path="/addquestion" element={<AddQuestionPage />} />
+          <Route path="/addquestion" element={<AddQuestionPageLazy />} />
           <Route path="/question/:id" element={<QuestionPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
