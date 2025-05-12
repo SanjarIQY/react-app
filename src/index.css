@@ -41,6 +41,17 @@ body {
   color: var(--text-color)
 }
 
+.darkLayout {
+  --main-bg-color: #23272F;
+  --text-color: #FFF;
+
+  --card-bg-color: #343a46;
+
+  --btn-bg-color: #16444f;
+  --btn-text-color: #57C4DC; 
+  --green-color: #219679
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
