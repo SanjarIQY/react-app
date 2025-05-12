@@ -41,15 +41,18 @@ body {
   color: var(--text-color)
 }
 
-.darkLayout {
-  --main-bg-color: #23272F;
-  --text-color: #FFF;
+.lightLayout {
+  --main-bg-color: #FFF;
+    --text-color: #000;
 
-  --card-bg-color: #343a46;
+    --card-bg-color: #ebedf0;
 
-  --btn-bg-color: #16444f;
-  --btn-text-color: #57C4DC; 
-  --green-color: #219679
+    --btn-bg-color: #16444f;
+    --btn-text-color: #57C4DC; 
+    
+    --btn-bg-color: #383b3f;
+    --btn-text-color: #FFF; 
+    --green-color: #219679
 }
 
 h1 {
