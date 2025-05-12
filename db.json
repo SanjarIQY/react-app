@@ -564,17 +564,6 @@
       "resources": [],
       "level": 1,
       "completed": false
-    },
-    {
-      "id": "0b2b",
-      "question": "Whad is poinder?",
-      "answer": "Der iz no need do know abot id",
-      "description": "-----",
-      "resources": [
-        "https://youtube."
-      ],
-      "level": 1,
-      "completed": false
     }
   ]
 }

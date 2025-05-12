@@ -4,6 +4,7 @@ import { Badge } from "../../components/Badge";
 import cls from "./QuestionPage.module.css";
 import { Button } from "../../components/Button";
 import { useFetch } from "../../hooks/useFetch";
+import { useAuth } from "../../hooks/useAuth";
 import { API_URL } from "../../constants";
 import { Loader, SmallLoader } from "../../components/Loader";
 
@@ -13,6 +14,7 @@ export const QuestionPage = () => {
   const params = useParams();
   const [isChecked, setIsChecked] = useState(true);
   const [card, setCard] = useState(null);
+  const { isAuth } = useAuth();
 
   const levelVariant = () => (card.level === 1 ? "primary" : card.level === 2 ? "warning" : "alert");
   const completedVariant = () => (card.completed ? "success" : "primary");
@@ -93,9 +95,11 @@ export const QuestionPage = () => {
             {isCardUpdating && <SmallLoader />}
           </label>
 
-          <Button onClick={() => navigate(`/editquestion/${card.id}`)} isDisabled={isCardUpdating}>
-            Edit question
-          </Button>
+          {isAuth && (
+            <Button onClick={() => navigate(`/editquestion/${card.id}`)} isDisabled={isCardUpdating}>
+              Edit question
+            </Button>
+          )}
           <Button onClick={() => navigate(`/`)} isDisabled={isCardUpdating}>
             Back
           </Button>
