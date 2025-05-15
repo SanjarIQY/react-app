@@ -4,7 +4,7 @@ import { THEME_STORAGE } from "../constants";
 export const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
-  const savedTheme = localStorage.getItem(THEME_STORAGE || "light");
+  const savedTheme = localStorage.getItem(THEME_STORAGE) || "light";
   const [theme, setTheme] = useState(savedTheme);
 
   useLayoutEffect(() => {
@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }) => {
         setTheme("dark");
         document.body.classList.remove("darkLayout");
       } else {
-        savedTheme === "dark" && document.body.classList.add("darkLayout");
+        savedTheme === "dark" && document.body.classlist.add("darkLayout");
         setTheme(savedTheme);
       }
     };
