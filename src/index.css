@@ -1,14 +1,9 @@
 :root {
-  --main-bg-color: #23272F;
+  --main-bg-color: #FFF;
+  --text-color: #000;
 
-  --text-color: #FFF;
+  --card-bg-color: #ebedf0;
 
-  --card-bg-color: #343a46;
-  
-  --green-color: #219679
-    
-  --btn-bg-color: #16444f;
-  --btn-text-color: #57C4DC; 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -41,18 +36,15 @@ body {
   color: var(--text-color)
 }
 
-.lightLayout {
-  --main-bg-color: #FFF;
-    --text-color: #000;
+.darkLayout {
+  --main-bg-color: #23272F;
+  --text-color: #FFF;
 
-    --card-bg-color: #ebedf0;
+  --card-bg-color: #343a46;
 
-    --btn-bg-color: #16444f;
-    --btn-text-color: #57C4DC; 
-    
-    --btn-bg-color: #383b3f;
-    --btn-text-color: #FFF; 
-    --green-color: #219679
+  --btn-bg-color: #16444f;
+  --btn-text-color: #57C4DC; 
+  --green-color: #219679
 }
 
 h1 {
